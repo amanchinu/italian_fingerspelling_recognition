@@ -64,16 +64,16 @@ def predict_from_folder(folder, img_width, img_height, model, sign_labels, weigh
                     left_correct += 1
             total_imgs += 1
 
-    print "Total correct predictions: " + '\n' + " -" + str( (correct_predictions * 100) / total_imgs ) + "% " + " out of " +  str( total_imgs ) + " total images"
-    print "Front correct predictions: " + '\n' + " -" + str((front_correct * 100)/ front_total ) + "%" + " out of " + str(front_total) + " total images"
+    print ("Total correct predictions: " + '\n' + " -" + str( (correct_predictions * 100) / total_imgs ) + "% " + " out of " +  str( total_imgs ) + " total images")
+    print ("Front correct predictions: " + '\n' + " -" + str((front_correct * 100)/ front_total ) + "%" + " out of " + str(front_total) + " total images")
     if top_total != 0:
-        print "Top correct predictions: " + '\n' + " -" + str((top_correct * 100)/ top_total ) + "%" + " out of " + str( top_total) + " total images"
+        print ("Top correct predictions: " + '\n' + " -" + str((top_correct * 100)/ top_total ) + "%" + " out of " + str( top_total) + " total images")
     if bottom_total != 0:
-        print "Bottom correct predictions:" + '\n' + " -" + str((bottom_correct * 100)/ bottom_total ) + "%" + " out of " + str( bottom_total) + " total images"
+        print ("Bottom correct predictions:" + '\n' + " -" + str((bottom_correct * 100)/ bottom_total ) + "%" + " out of " + str( bottom_total) + " total images")
     if left_total != 0:
-        print "Left correct predictions:" + '\n' + " -" + str((left_correct * 100)/ left_total ) + "%" + " out of " + str( left_total) + " total images"
+        print ("Left correct predictions:" + '\n' + " -" + str((left_correct * 100)/ left_total ) + "%" + " out of " + str( left_total) + " total images")
     if right_total != 0:
-        print "Right correct predictions:" + '\n' + " -" + str((right_correct * 100)/ right_total ) + "%" + " out of " + str( right_total) + " total images"
+        print ("Right correct predictions:" + '\n' + " -" + str((right_correct * 100)/ right_total ) + "%" + " out of " + str( right_total) + " total images")
 
 # Function for pretty printing of the confusion matrix
 def print_cm(cm, labels, hide_zeroes=False, hide_diagonal=False, hide_threshold=None):
@@ -81,13 +81,13 @@ def print_cm(cm, labels, hide_zeroes=False, hide_diagonal=False, hide_threshold=
     columnwidth = max([len(x) for x in labels]+[5]) # 5 is value length
     empty_cell = " " * columnwidth
     # Print header
-    print "    " + empty_cell,
+    print ("    " + empty_cell),
     for label in labels: 
-        print "%{0}s".format(columnwidth) % label,
+        print ("%{0}s".format(columnwidth) % label),
     print
     # Print rows
     for i, label1 in enumerate(labels):
-        print "    %{0}s".format(columnwidth) % label1,
+        print ("    %{0}s".format(columnwidth) % label1),
         for j in range(len(labels)): 
             cell = "%{0}d".format(columnwidth) % cm[i, j]
             if hide_zeroes:
@@ -96,7 +96,7 @@ def print_cm(cm, labels, hide_zeroes=False, hide_diagonal=False, hide_threshold=
                 cell = cell if i != j else empty_cell
             if hide_threshold:
                 cell = cell if cm[i, j] > hide_threshold else empty_cell
-            print cell,
+            print (cell),
         print
 
 def print_cm_plot(cm, fileName):
