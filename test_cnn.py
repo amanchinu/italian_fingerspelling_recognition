@@ -60,14 +60,14 @@ else:
 
 # Instantiate model
 model = cnn_model.istantiate_model(input_shape, False)
-print "INFO: Model instantiated"
+print("INFO: Model instantiated")
 # Compile model
 model.compile(loss='categorical_crossentropy',
               optimizer='adam'  ,
               metrics=['accuracy'])
 # Load weights
 model.load_weights(WEIGHTS)
-print "INFO: Model compiled"
+print("INFO: Model compiled")
 
 # Generate testing data
 test_datagen = ImageDataGenerator(
@@ -87,20 +87,20 @@ testing_generator = test_datagen.flow_from_directory(
 Y_pred = model.predict_generator(testing_generator, NB_SAMPLES // 64 + 1  )
 y_pred = np.argmax(Y_pred, axis=1)
 cm = confusion_matrix(testing_generator.classes, y_pred, index_labels)
-print ""
-print "CONFUSION MATRIX"
+print("")
+print("CONFUSION MATRIX")
 testing.print_cm(cm, sign_labels)
-print ""
-print ""
-print "Classification Report"
-print ""
-print ""
-print classification_report(testing_generator.classes, y_pred, target_names=sign_labels)
-print ""
-print ""
+print("")
+print("")
+print("Classification Report")
+print("")
+print("")
+print(classification_report(testing_generator.classes, y_pred, target_names=sign_labels))
+print("")
+print("")
 
 # PREDICT
-print "PREDICTIONS"
-print ""
+print("PREDICTIONS")
+print("")
 testing.predict_from_folder("dataset/dataset1/validation", img_width, img_height, model, sign_labels, WEIGHTS)
 

@@ -126,9 +126,9 @@ model.save_weights(weights_name) # saving weights
 
 # Evaluate model
 score = model.evaluate_generator(validation_generator, nb_validation_samples//batch_size, workers=12, use_multiprocessing=False)
-print "Evaluate generator results:"
-print "Evaluate loss: " + str(score[0])
-print "Evaluate accuracy: " + str(score[1])
+print ("Evaluate generator results:")
+print ("Evaluate loss: " + str(score[0]))
+print ("Evaluate accuracy: " + str(score[1]))
 
 # Predict model
 #scores = model.predict_generator(testing_generator, nb_testing_samples//batch_size, workers=12)
@@ -139,28 +139,28 @@ loss_history = history.history["loss"]
 numpy_loss_history = numpy.array(loss_history)
 numpy.savetxt("statistics/"+ DATASET_FOLDER.split("/")[1] + "/loss_history"+ test_type + str(epochs)+ "e" + ".txt", numpy_loss_history*100, delimiter=",")
 min_loss = numpy.amin(numpy_loss_history)
-print "MIN LOSS: " + str(min_loss)
+print ("MIN LOSS: " + str(min_loss))
 
 # Save val_loss history on txt
 val_loss_history = history.history["val_loss"]
 numpy_val_loss_history = numpy.array(val_loss_history)
 numpy.savetxt("statistics/"+ DATASET_FOLDER.split("/")[1] + "/val_loss_history"+ test_type + str(epochs)+ "e" + ".txt", numpy_val_loss_history*100, delimiter=",")
 min_val_loss = numpy.amin(numpy_val_loss_history)
-print "MIN VAL LOSS: " +  str(min_val_loss)
+print ("MIN VAL LOSS: " +  str(min_val_loss))
 
 #Save acc history on txt
 acc_history = history.history["acc"]
 numpy_acc_history = numpy.array(acc_history)
 numpy.savetxt("statistics/"+ DATASET_FOLDER.split("/")[1] + "/acc_history"+ test_type + str(epochs)+ "e" +".txt", numpy_acc_history*100, delimiter=",")
 max_acc = numpy.amax(numpy_acc_history)
-print "MAX ACC: " + str(max_acc)
+print ("MAX ACC: " + str(max_acc))
 
 #Save val_acc history on txt
 val_acc_history = history.history["val_acc"]
 numpy_val_acc_history = numpy.array(val_acc_history)
 numpy.savetxt("statistics/"+ DATASET_FOLDER.split("/")[1] + "/val_acc_history" + test_type + str(epochs)+ "e" +".txt", numpy_val_acc_history*100, delimiter=",")
 max_val_acc = numpy.amax(numpy_val_acc_history)
-print "MAX VAL ACC: " + str(max_val_acc)
+print ("MAX VAL ACC: " + str(max_val_acc))
 
 # Save maximums on txt
 maxs = numpy.array([min_loss, min_val_loss, max_acc, max_val_acc])
