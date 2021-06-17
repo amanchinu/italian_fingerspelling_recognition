@@ -59,8 +59,8 @@ nb_testing_samples = 732 # dataset 2
 epochs = 250
 batch_size = 64
 #test_type = "_1epochTest_"
-test_type = "_noBatchNormalization_"
-#test_type = "_3BatchNorm_"
+#test_type = "_noBatchNormalization_"
+test_type = "_3BatchNorm_"
 
 weights_name = "weights/" + DATASET_FOLDER.split("/")[1] + test_type + str(epochs)+ "e" + ".h5" # Location where to save weights
 
@@ -149,7 +149,7 @@ min_val_loss = numpy.amin(numpy_val_loss_history)
 print ("MIN VAL LOSS: " +  str(min_val_loss))
 
 #Save acc history on txt
-acc_history = history.history["acccuracy"]
+acc_history = history.history["accuracy"]
 numpy_acc_history = numpy.array(acc_history)
 numpy.savetxt("statistics/"+ DATASET_FOLDER.split("/")[1] + "/acc_history"+ test_type + str(epochs)+ "e" +".txt", numpy_acc_history*100, delimiter=",")
 max_acc = numpy.amax(numpy_acc_history)
