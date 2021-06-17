@@ -149,14 +149,14 @@ min_val_loss = numpy.amin(numpy_val_loss_history)
 print ("MIN VAL LOSS: " +  str(min_val_loss))
 
 #Save acc history on txt
-acc_history = history.history["acc"]
+acc_history = history.history["acccuracy"]
 numpy_acc_history = numpy.array(acc_history)
 numpy.savetxt("statistics/"+ DATASET_FOLDER.split("/")[1] + "/acc_history"+ test_type + str(epochs)+ "e" +".txt", numpy_acc_history*100, delimiter=",")
 max_acc = numpy.amax(numpy_acc_history)
 print ("MAX ACC: " + str(max_acc))
 
 #Save val_acc history on txt
-val_acc_history = history.history["val_acc"]
+val_acc_history = history.history["val_accuracy"]
 numpy_val_acc_history = numpy.array(val_acc_history)
 numpy.savetxt("statistics/"+ DATASET_FOLDER.split("/")[1] + "/val_acc_history" + test_type + str(epochs)+ "e" +".txt", numpy_val_acc_history*100, delimiter=",")
 max_val_acc = numpy.amax(numpy_val_acc_history)
@@ -177,8 +177,8 @@ print("Saving plots...")
 # Val acc and train acc evolution during training for each version
 # Summarize history for accuracy
 fig1 = plt.figure(1)
-plt.plot(history.history['acc'])
-plt.plot(history.history['val_acc'])
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
 plt.ylim(0, 1)
 plt.xlim(0, epochs)
 plt.title('Model accuracy')
